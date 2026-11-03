@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+
+void main()
+{
+    FILE *fp;
+    char name[300];
+
+    //clrscr();
+
+    // 1. Writing data into file
+    fp = fopen("mdthoufeeq.txt", "w");
+
+    if (fp == NULL)
+    {
+        printf("File cannot be opened");     
+    
+        return;
+    }
+
+    fprintf(fp, "The C programming class is very useful and informative.The concepts are explained clearly and in an easy way.Practical examples help me understand programming betterI am improving my coding and problem-solving skills.I thank the trainer for making the sessions interactive and interesting. The previous trainer did not explain the concepts clearly, but the current trainer explains everything very well and makes it easy to understand.");
+
+    fclose(fp);
+
+    printf("Data written successfully\n");
+
+
+    // 2. Appending data into file
+    fp = fopen("student.txt", "a");
+
+    if (fp == NULL)
+    {
+        printf("File cannot be opened");
+        
+        return;
+    }
+
+    fprintf(fp, "\nThe concepts are explained clearly and in an easy way.Practical examples help me understand programming betterI am improving my coding and problem-solving skills.I thank the trainer for making the sessions interactive and interesting. The previous trainer did not explain the concepts clearly, but the current trainer explains everything very well and makes it easy to understand.");
+
+    fclose(fp);
+
+    printf("Data appended successfully\n");
+
+
+    // 3. Reading data from file
+    fp = fopen("student.txt", "r");
+
+    if (fp == NULL)
+    {
+        printf("File cannot be opened");
+        
+        return;
+    }
+
+    printf("\nFile Contents:\n");
+
+    while (fgets(name, sizeof(name), fp) != NULL)
+    {
+        printf("%s", name);
+    }
+
+    fclose(fp);
+
+
+}
